@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="PrimaryPrincipalColor">#430084</color>
+    <color name="PrimaryCrystalClearColor">#D9CCE6</color>
+    <color name="WhiteColor">#FFFFFF</color>
+    <color name="Gray100Color">#F9FAFB</color>
+    <color name="Gray400Color">#C4CDD5</color>
+    <color name="Gray600Color">#637381</color>
+    <color name="Gray800Color">#212B36</color>
+    <color name="Gray900Color">#161C24</color>
+    <color name="TextPrimaryLightColor">#212B36</color>
+</resources>

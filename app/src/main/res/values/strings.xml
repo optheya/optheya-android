@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Optheya</string>
+    <string name="contentDescLogo">Logo branco da optheya</string>
+    <string name="contentDescTheya">Theya</string>
+    
+    <string name="subtitle_login_screen">Falta pouco pra você ter os melhores pratos na palma da mão!</string>
+
+    <string name="continue_with_google">Continuar com o Google </string>
+    <string name="login_latter">Logar depois </string>
+    <string name="another_options">Outras opções </string>
+    <string name="warnign_creating_account">Ao criar uma conta, você aceita os </string>
+    <string name="warnign_use_term"> Termos de Uso </string>
+    <string name="warnign_privacity_policy"> Políticas de Privacidade</string>
+    <string name="and"> e </string>
+</resources>

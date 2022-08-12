@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "414885421348",
+    "project_id": "optheya-app",
+    "storage_bucket": "optheya-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414885421348:android:89c66cbdf82c2f6ed853b1",
+        "android_client_info": {
+          "package_name": "com.br.optheya_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "414885421348-tsf0cfb7qvnggtmi4nvakr4st0tbmqeq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.br.optheya_android",
+            "certificate_hash": "8ee8953abedcb7eb4eb695abd4b5028b6f9e59e5"
+          }
+        },
+        {
+          "client_id": "414885421348-93pg7icclbblkhe00ensos3u8hese38t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCArcQfcSc3mSrwTnPrFefjZlThQkIcSk4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "414885421348-93pg7icclbblkhe00ensos3u8hese38t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
