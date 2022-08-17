@@ -12,4 +12,7 @@
     <string name="warnign_use_term"> Termos de Uso </string>
     <string name="warnign_privacity_policy"> Políticas de Privacidade</string>
     <string name="and"> e </string>
+    <string name="avatar">avatar</string>
+    <string name="active_location">Ative a localização</string>
+    <string name="choose_xp">Busque por experiências</string>
 </resources>

@@ -3,7 +3,8 @@ package com.br.optheya_android.navigation
 enum class OnboardScreens {
     SplashScreen,
     TutorialScreen,
-    LoginScreen;
+    LoginScreen,
+    HomeScreen;
 
     companion object {
         fun fromRoute(route: String?): OnboardScreens =
@@ -13,6 +14,7 @@ enum class OnboardScreens {
                 SplashScreen.name -> SplashScreen
                 TutorialScreen.name -> TutorialScreen
                 LoginScreen.name -> LoginScreen
+                HomeScreen.name -> HomeScreen
                 null -> SplashScreen
                 else -> throw IllegalArgumentException()
             }

@@ -8,14 +8,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
@@ -24,11 +20,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.br.optheya_android.R
+import com.br.optheya_android.navigation.OnboardScreens
 import com.br.optheya_android.ui.theme.*
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -52,13 +48,13 @@ fun MainLoginContent(navController: NavController) {
             verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            LoginOptions()
+            LoginOptions(navController = navController)
         }
     }
 }
 
 @Composable
-fun LoginOptions(){
+fun LoginOptions(navController: NavController){
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -74,7 +70,7 @@ fun LoginOptions(){
                     .fillMaxWidth()
                     .padding(end = 16.dp, start = 16.dp),
                 onClick = {
-                    // do something here
+                    navController.navigate(OnboardScreens.TutorialScreen.name)//MUDAR QUANDO CRIAR A TELA DELE
                 },
                 colors = ButtonDefaults.buttonColors(PrimaryPrincipalColor),
                 shape = RoundedCornerShape(
@@ -108,7 +104,7 @@ fun LoginOptions(){
                         .fillMaxWidth(0.5f)
                         .padding(start = 16.dp),
                     onClick = {
-                        // do something here
+                        navController.navigate(OnboardScreens.HomeScreen.name)
                     },
                     colors = ButtonDefaults.buttonColors(Gray100Color),
                     border = BorderStroke(width = 1.dp, color = PrimaryPrincipalColor),
@@ -134,7 +130,7 @@ fun LoginOptions(){
                         .fillMaxWidth()
                         .padding(end = 16.dp),
                     onClick = {
-                        // do something here
+                        navController.navigate(OnboardScreens.SplashScreen.name) //MUDAR QUANDO CRIAR A TELA DELE
                     },
                     colors = ButtonDefaults.buttonColors(Gray100Color),
                     border = BorderStroke(width = 1.dp, color = PrimaryPrincipalColor),
