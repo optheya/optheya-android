@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
@@ -114,10 +116,10 @@ fun MainHomeContent() {
             SectionTitle("Missões")
 
             val mission = arrayOf(
-                Mission("Visitar 2 lojas em um dia", "100 Theyas"),
-                Mission("Visitar  2 Pizzarias em 1 dia", "200 Theyas"),
-                Mission("Fazer 2 pedidos", "200 Theyas"),
-                Mission("Comer em um restaurante", "10 Theyas")
+                Mission("Visitar 2 lojas em um dia", "100 Theyas", 0.5f),
+                Mission("Visitar  4 pastel em 1 dia", "200 Theyas", 0.25f),
+                Mission("Fazer 2 pedidos", "200 Theyas", 0f),
+                Mission("Comer em um restaurante", "10 Theyas", 1f)
             )
 
             LazyRow(
@@ -407,6 +409,15 @@ fun Mission(mission: Mission){
         backgroundColor = PrimaryCrystalClearColor
     ) {
         Column(
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.Start
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.bottom_decor),
+                contentDescription = "detail decor",
+            )
+        }
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight(),
@@ -444,6 +455,7 @@ fun Mission(mission: Mission){
                     .padding(start = 6.dp, end = 6.dp, top = 16.dp)
             )
 
+            ProgressMission(progress = mission.progress)
 
         }
 
@@ -509,10 +521,44 @@ fun Reward(reward: Reward){
                 color = Gray800Color,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 8.dp, end =85.dp)
+                    .padding(start = 8.dp, end = 85.dp)
             )
         }
 
     }
 
+}
+
+@Composable
+private fun ProgressMission(progress: Float){
+    Surface(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(15.dp)
+            .background(WhiteColor)
+            .clip(
+                CircleShape.copy(
+                    topStart = CornerSize(8.dp),
+                    bottomStart = CornerSize(8.dp),
+                    topEnd = CornerSize(43.dp),
+                    bottomEnd = CornerSize(0.dp)
+                )
+            ),
+
+        ) {
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            LinearProgressIndicator(
+                progress = progress,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(6.dp)
+                    .clip(CircleShape),
+                backgroundColor = WhiteColor,
+                color = MainSuccessColor,
+            )
+        }
+    }
 }

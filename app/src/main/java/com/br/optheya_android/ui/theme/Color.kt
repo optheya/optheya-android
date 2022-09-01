@@ -11,6 +11,7 @@ val Teal200 = Color(0xFF03DAC5)
 
 val PrimaryPrincipalColor = Color(0xFF430084)
 val PrimaryCrystalClearColor = Color(0xFFD9CCE6)
+val MainSuccessColor = Color(0xFF00FD8D)
 val WhiteColor = Color(0xFFFFFFFF)
 val Gray100Color = Color(0xFFF9FAFB)
 val Gray300Color = Color(0xFFDFE3E8)
