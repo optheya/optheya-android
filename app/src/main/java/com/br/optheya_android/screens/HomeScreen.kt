@@ -1,6 +1,7 @@
 package com.br.optheya_android.screens
 
 import android.annotation.SuppressLint
+import android.widget.ImageButton
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -38,15 +39,12 @@ import com.br.optheya_android.ui.theme.*
 @Composable
 fun HomeScreen(navController: NavController) {
     Scaffold {
-//        MainHomeContent(navController)
-        MainHomeContent()
+        MainHomeContent(navController)
     }
 }
 
 @Composable
-@Preview
-//fun MainHomeContent(navController: NavController) {
-fun MainHomeContent() {
+fun MainHomeContent(navController: NavController) {
     Surface(
         modifier = Modifier
             .fillMaxSize(),
@@ -559,6 +557,15 @@ private fun ProgressMission(progress: Float){
                 backgroundColor = WhiteColor,
                 color = MainSuccessColor,
             )
+        }
+    }
+}
+
+@Composable
+@Preview
+private fun bannerFinal(){
+    Surface() {
+        Column() {
         }
     }
 }

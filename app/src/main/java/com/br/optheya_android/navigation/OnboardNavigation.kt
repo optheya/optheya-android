@@ -5,10 +5,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.br.optheya_android.screens.HomeScreen
-import com.br.optheya_android.screens.LoginScreen
-import com.br.optheya_android.screens.SplashScreen
-import com.br.optheya_android.screens.TutorialScreen
+import com.br.optheya_android.screens.*
 import kotlinx.coroutines.delay
 
 @Composable
@@ -34,7 +31,7 @@ fun OnboardNavigation(){
         ){ backStackEntry ->
             TutorialScreen(
                 navController = navController,
-                skipTutorial = OnboardScreens.LoginScreen.name
+                skipTutorial = OnboardScreens.LoginEmailScreen.name
             )
         }
 
@@ -50,5 +47,8 @@ fun OnboardNavigation(){
             HomeScreen(navController = navController)
         }
 
+        composable(route = OnboardScreens.LoginEmailScreen.name) {
+            LoginEmailScreen(navController = navController)
+        }
     }
 }

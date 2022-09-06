@@ -4,7 +4,8 @@ enum class OnboardScreens {
     SplashScreen,
     TutorialScreen,
     LoginScreen,
-    HomeScreen;
+    HomeScreen,
+    LoginEmailScreen;
 
     companion object {
         fun fromRoute(route: String?): OnboardScreens =
@@ -15,6 +16,7 @@ enum class OnboardScreens {
                 TutorialScreen.name -> TutorialScreen
                 LoginScreen.name -> LoginScreen
                 HomeScreen.name -> HomeScreen
+                LoginEmailScreen.name -> LoginEmailScreen
                 null -> SplashScreen
                 else -> throw IllegalArgumentException()
             }

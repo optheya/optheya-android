@@ -1,6 +1,7 @@
 package com.br.optheya_android.screens
 
 import android.annotation.SuppressLint
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -8,10 +9,11 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
@@ -26,19 +28,29 @@ import androidx.navigation.NavController
 import com.br.optheya_android.R
 import com.br.optheya_android.navigation.OnboardScreens
 import com.br.optheya_android.ui.theme.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterialApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun LoginScreen(navController: NavController) {
+
+    val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
+        bottomSheetState = BottomSheetState(BottomSheetValue.Collapsed)
+    )
+    val coroutineScope = rememberCoroutineScope()
+
     Scaffold(
 
     ) {
-        MainLoginContent(navController = navController)
+        MainLoginContent(navController = navController, coroutineScope = coroutineScope, bottomSheetScaffoldState = bottomSheetScaffoldState)
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun MainLoginContent(navController: NavController) {
+fun MainLoginContent(navController: NavController, coroutineScope: CoroutineScope, bottomSheetScaffoldState: BottomSheetScaffoldState) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -48,13 +60,23 @@ fun MainLoginContent(navController: NavController) {
             verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            LoginOptions(navController = navController)
+            LoginOptions(navController = navController, coroutineScope = coroutineScope, bottomSheetScaffoldState = bottomSheetScaffoldState)
         }
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun LoginOptions(navController: NavController){
+fun LoginOptions(navController: NavController, coroutineScope: CoroutineScope, bottomSheetScaffoldState: BottomSheetScaffoldState){
+
+    var stateModal by remember {
+        mutableStateOf(false)
+    }
+
+    if (stateModal){
+        BottomSheet(bottomSheetScaffoldState = bottomSheetScaffoldState, coroutineScope = coroutineScope)
+    }
+
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -124,13 +146,13 @@ fun LoginOptions(navController: NavController){
                 }
 
                 Spacer(modifier = Modifier.width(9.dp))
-                
+
                 Button(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(end = 16.dp),
                     onClick = {
-                        navController.navigate(OnboardScreens.SplashScreen.name) //MUDAR QUANDO CRIAR A TELA DELE
+                        stateModal = false //mudar aqui para abbrir o modal
                     },
                     colors = ButtonDefaults.buttonColors(Gray100Color),
                     border = BorderStroke(width = 1.dp, color = PrimaryPrincipalColor),
@@ -223,6 +245,37 @@ fun BackgroundScreenBox(){
                 textAlign = TextAlign.Center,
                 color = Gray300Color
             )
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+fun BottomSheet(bottomSheetScaffoldState: BottomSheetScaffoldState, coroutineScope: CoroutineScope){
+    BottomSheetScaffold(
+        scaffoldState = bottomSheetScaffoldState,
+        backgroundColor = Color.Transparent,
+        sheetContent = {
+            Box(
+                Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
+            ) {
+                Text(text = "Hello from sheet")
+            }
+        }, sheetPeekHeight = 0.dp
+    ) {
+        Button(onClick = {
+            coroutineScope.launch {
+
+                if (bottomSheetScaffoldState.bottomSheetState.isCollapsed) {
+                    bottomSheetScaffoldState.bottomSheetState.expand()
+                } else {
+                    bottomSheetScaffoldState.bottomSheetState.collapse()
+                }
+            }
+        }) {
+            Text(text = "Expand/Collapse Bottom Sheet")
         }
     }
 }
