@@ -25,16 +25,16 @@ import com.br.optheya_android.ui.theme.PurpleSolidColor
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun LoginEmailScreen(navController: NavController) {
+fun RegistrationScreen(navController: NavController) {
     Scaffold {
-        MainLoginEmailContent(navController)
+        MainRegistrationContent(navController)
     }
 }
 
-//TODO: Remover string para arquivo de strings
+//TODO: PASSAR STRINGS PARA ARQUIVOS DE STRING
 
 @Composable
-fun MainLoginEmailContent(navController: NavController) {
+fun MainRegistrationContent(navController: NavController) {
     Surface(
         modifier = Modifier
             .fillMaxSize(),
@@ -43,19 +43,28 @@ fun MainLoginEmailContent(navController: NavController) {
         Column {
             TopBar()
             HeadersLabelToScreens(
-                title = "Bem-vindo de volta! \uD83D\uDC4B",
-                subtitle = "Faça login para experiências incríveis!"
+                title = "Faça parte da Optheya!",
+                subtitle = "Cadastre-se para experiências incríveis!"
             )
             Column(
                 modifier = Modifier
                     .padding(start = 15.dp, end = 15.dp)
             ) {
                 EditText(
+                    labelTitle = "Nome",
+                    labelPlaceholdder = "Nome",
+                    keyboardType = KeyboardType.Text
+                )
+                EditText(
                     labelTitle = "Email",
-                    labelPlaceholdder = "Seu email cadastrado",
+                    labelPlaceholdder = "Email",
                     keyboardType = KeyboardType.Email
                 )
-                Spacer(modifier = Modifier.height(16.dp))
+                EditText(
+                    labelTitle = "Celular",
+                    labelPlaceholdder = "Celular",
+                    keyboardType = KeyboardType.Phone
+                )
                 EditText(
                     labelTitle = "Senha",
                     labelPlaceholdder = "******",
@@ -63,32 +72,23 @@ fun MainLoginEmailContent(navController: NavController) {
                     icon = R.drawable.ic_baseline_remove_red_eye_24, //TODO: MUDAR O ICONE E MUDAR A VISIBILIDADE DA SENHA
                     keyboardType = KeyboardType.Password
                 )
-                Column(
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.End,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                ) {
-                    TextButton(onClick = { }) {
-                        Text(
-                            text = "Esqueceu?",
-                            color = PurpleSolidColor,
-                            fontSize = 12.sp,
-                            fontFamily = Actay,
-                            fontWeight = FontWeight.W400
-                        )
-                    }
-                }
+                EditText(
+                    labelTitle = "Confirme a senha",
+                    labelPlaceholdder = "******",
+                    showEndIcon = true,
+                    icon = R.drawable.ic_baseline_remove_red_eye_24, //TODO: MUDAR O ICONE E MUDAR A VISIBILIDADE DA SENHA
+                    keyboardType = KeyboardType.Password
+                )
 
-                PrimaryButton(label = "Fazer Login", onClick = {
+                PrimaryButton(label = "Fazer Cadastro", onClick = {
                     Log.d(
-                        "LOGIN EMAIL SCREEN",
-                        "MainLoginEmailContent: fazer login clicked"
+                        "Registration SCREEN",
+                        "MainrEGISTRATIONContent: fazer login clicked"
                         )
                     }
                 )
                 Spacer(modifier = Modifier.height(14.dp))
-                LabelWithClick(label = "Ainda não tem uma conta? ", linkLabel = "Cadastrar")
+                LabelWithClick(label = "Já tem conta? ", linkLabel = "Fazer Login")
             }
         }
     }

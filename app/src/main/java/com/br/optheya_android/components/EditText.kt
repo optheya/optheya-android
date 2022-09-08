@@ -90,5 +90,6 @@ fun EditText(
                 .fillMaxWidth(),
             shape = RoundedCornerShape(10.dp)
         )
+        Spacer(modifier = Modifier.height(16.dp))
     }
 }
