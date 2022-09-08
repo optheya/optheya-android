@@ -2,6 +2,7 @@ package com.br.optheya_android.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -31,7 +32,7 @@ fun OnboardNavigation(){
         ){ backStackEntry ->
             TutorialScreen(
                 navController = navController,
-                skipTutorial = OnboardScreens.LoginScreen.name
+                skipTutorial = OnboardScreens.UseTermsScreen.name
             )
         }
 
@@ -49,6 +50,10 @@ fun OnboardNavigation(){
 
         composable(route = OnboardScreens.LoginEmailScreen.name) {
             LoginEmailScreen(navController = navController)
+        }
+
+        composable(route = OnboardScreens.UseTermsScreen.name) {
+            UseTermsScreen(navController = navController, context = LocalContext.current )
         }
     }
 }

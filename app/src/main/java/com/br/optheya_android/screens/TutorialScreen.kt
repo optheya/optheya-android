@@ -1,6 +1,7 @@
 package com.br.optheya_android.screens
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
@@ -109,7 +110,9 @@ fun MainTutorialContent(navController: NavController, skipTutorial: String) {
             verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.End
         ) {
-            NextButton()
+            NextButton {
+                Log.d("TUTORIAL NEXT BTN", "MainTutorialContent: NextClicked")
+            }
         }
     }
 }

@@ -23,9 +23,7 @@ import com.br.optheya_android.ui.theme.WhiteColor
 @Composable
 fun LargeButtonWithIcon(label: String, icon: Int, onClick: () -> Unit){
     Card(
-        onClick = {
-            onClick
-        },
+        onClick = onClick,
         backgroundColor = WhiteColor,
         modifier = Modifier
             .fillMaxWidth()

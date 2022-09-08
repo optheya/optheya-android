@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,13 +17,14 @@ import androidx.compose.ui.unit.dp
 import com.br.optheya_android.R
 import com.br.optheya_android.ui.theme.SelectedBulletColor
 
-//TODO: FAZER CLICK DO BOTAÃO
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun NextButton(){
+fun NextButton(onClick: () -> Unit){
     Card(
         modifier = Modifier
             .height(62.dp)
             .width(62.dp),
+        onClick = onClick,
         backgroundColor = SelectedBulletColor,
         shape = RoundedCornerShape(
             corner = CornerSize(
