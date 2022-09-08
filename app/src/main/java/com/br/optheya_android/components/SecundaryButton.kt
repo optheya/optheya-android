@@ -1,5 +1,6 @@
 package com.br.optheya_android.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -19,16 +20,18 @@ import androidx.compose.ui.unit.sp
 import com.br.optheya_android.R
 import com.br.optheya_android.navigation.OnboardScreens
 import com.br.optheya_android.ui.theme.Actay
+import com.br.optheya_android.ui.theme.Gray100Color
 import com.br.optheya_android.ui.theme.PrimaryPrincipalColor
 import com.br.optheya_android.ui.theme.WhiteColor
 
 @Composable
-fun PrimaryButton(label: String, hasIcon:Boolean=false, iconDraw: Int = 0, onClick: () -> Unit){
+fun SecundaryButton(label: String, modifier: Modifier = Modifier, onClick: () -> Unit){
     Button(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth(),
         onClick = onClick,
-        colors = ButtonDefaults.buttonColors(PrimaryPrincipalColor),
+        colors = ButtonDefaults.buttonColors(Gray100Color),
+        border = BorderStroke(width = 1.dp, color = PrimaryPrincipalColor),
         shape = RoundedCornerShape(
             corner = CornerSize(
                 size = 8.dp
@@ -40,15 +43,7 @@ fun PrimaryButton(label: String, hasIcon:Boolean=false, iconDraw: Int = 0, onCli
             fontFamily = Actay,
             fontWeight = FontWeight.W400,
             fontSize = 16.sp,
-            color = WhiteColor
+            color = PrimaryPrincipalColor
         )
-        if (hasIcon){
-            Image(
-                modifier = Modifier
-                    .padding(start = 8.dp),
-                painter = painterResource(id = iconDraw),
-                contentDescription = label
-            )
-        }
     }
 }

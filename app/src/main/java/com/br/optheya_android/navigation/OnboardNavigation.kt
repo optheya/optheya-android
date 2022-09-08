@@ -31,7 +31,7 @@ fun OnboardNavigation(){
         ){ backStackEntry ->
             TutorialScreen(
                 navController = navController,
-                skipTutorial = OnboardScreens.LoginEmailScreen.name
+                skipTutorial = OnboardScreens.LoginScreen.name
             )
         }
 

@@ -1,6 +1,7 @@
 package com.br.optheya_android.screens
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -22,10 +23,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.br.optheya_android.R
+import com.br.optheya_android.components.BackgroundOnboarding
+import com.br.optheya_android.components.PrimaryButton
+import com.br.optheya_android.components.SecundaryButton
 import com.br.optheya_android.navigation.OnboardScreens
 import com.br.optheya_android.ui.theme.*
 import kotlinx.coroutines.CoroutineScope
@@ -55,7 +60,7 @@ fun MainLoginContent(navController: NavController, coroutineScope: CoroutineScop
         modifier = Modifier
             .fillMaxSize()
     ) {
-        BackgroundScreenBox()
+        BackgroundOnboarding(label = "Falta pouco pra você ter os melhores pratos na palma da mão!")
         Column(
             verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -73,10 +78,6 @@ fun LoginOptions(navController: NavController, coroutineScope: CoroutineScope, b
         mutableStateOf(false)
     }
 
-    if (stateModal){
-        BottomSheet(bottomSheetScaffoldState = bottomSheetScaffoldState, coroutineScope = coroutineScope)
-    }
-
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -85,35 +86,12 @@ fun LoginOptions(navController: NavController, coroutineScope: CoroutineScope, b
     ) {
         Column(
             verticalArrangement = Arrangement.Bottom,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .padding(start = 16.dp, end = 16.dp)
         ) {
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(end = 16.dp, start = 16.dp),
-                onClick = {
-                    navController.navigate(OnboardScreens.TutorialScreen.name)//MUDAR QUANDO CRIAR A TELA DELE
-                },
-                colors = ButtonDefaults.buttonColors(PrimaryPrincipalColor),
-                shape = RoundedCornerShape(
-                    corner = CornerSize(
-                        size = 8.dp
-                    )
-                )
-            ) {
-                Text(
-                    text = stringResource(id = R.string.continue_with_google),
-                    fontFamily = Actay,
-                    fontWeight = FontWeight.W400,
-                    fontSize = 16.sp,
-                    color = WhiteColor
-                )
-                Image(
-                    modifier = Modifier
-                        .padding(start = 8.dp),
-                    painter = painterResource(id = R.drawable.google_badge),
-                    contentDescription = stringResource(id = R.string.continue_with_google)
-                )
+            PrimaryButton(label = "Continuar com o Google", hasIcon = true, iconDraw = R.drawable.google_badge) {
+                Log.d("LOGIN GOOGLE", "LoginOptions: Login google clicket")
             }
 
 
@@ -121,57 +99,17 @@ fun LoginOptions(navController: NavController, coroutineScope: CoroutineScope, b
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
-                Button(
-                    modifier = Modifier
-                        .fillMaxWidth(0.5f)
-                        .padding(start = 16.dp),
-                    onClick = {
-                        navController.navigate(OnboardScreens.HomeScreen.name)
-                    },
-                    colors = ButtonDefaults.buttonColors(Gray100Color),
-                    border = BorderStroke(width = 1.dp, color = PrimaryPrincipalColor),
-                    shape = RoundedCornerShape(
-                        corner = CornerSize(
-                            size = 8.dp
-                        )
-                    )
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.login_latter),
-                        fontFamily = Actay,
-                        fontWeight = FontWeight.W400,
-                        fontSize = 16.sp,
-                        color = PrimaryPrincipalColor
-                    )
+
+                SecundaryButton(label = "Logar depois", modifier = Modifier.fillMaxWidth(0.5f)) {
+                   navController.navigate(OnboardScreens.HomeScreen.name)
                 }
 
                 Spacer(modifier = Modifier.width(9.dp))
 
-                Button(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(end = 16.dp),
-                    onClick = {
-                        stateModal = false //mudar aqui para abbrir o modal
-                    },
-                    colors = ButtonDefaults.buttonColors(Gray100Color),
-                    border = BorderStroke(width = 1.dp, color = PrimaryPrincipalColor),
-                    shape = RoundedCornerShape(
-                        corner = CornerSize(
-                            size = 8.dp
-                        )
-                    )
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.another_options),
-                        fontFamily = Actay,
-                        fontWeight = FontWeight.W400,
-                        fontSize = 16.sp,
-                        color = PrimaryPrincipalColor
-                    )
+                SecundaryButton(label = "Outras opções") {
+                    Log.d("OUTRAS OPÇÕES", "LoginOptions: OUTRAS OPÇOES CLICKET")
                 }
             }
-            
             Text(
                 modifier = Modifier
                     .padding(end = 39.dp, start = 39.dp, bottom = 20.dp, top = 24.dp)
@@ -192,90 +130,6 @@ fun LoginOptions(navController: NavController, coroutineScope: CoroutineScope, b
                 color = Gray900Color,
                 textAlign = TextAlign.Center
             )
-        }
-    }
-}
-
-@Composable
-fun BackgroundScreenBox(){
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(
-                brush = Brush.linearGradient(
-                    colors = listOf(
-                        PrimaryPrincipalColor,
-                        PrimaryPrincipalColor,
-                        PrimaryCrystalClearColor
-                    ),
-                )
-            )
-    ){
-        Column(
-            modifier = Modifier
-                .fillMaxWidth(),
-            verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Image(
-                modifier = Modifier
-                    .padding(start = 130.dp, end = 130.dp, top = 49.1f.dp)
-                    .height(44.dp)
-                    .width(60.dp),
-                painter = painterResource(id = R.drawable.logowithe),
-                contentDescription = stringResource(id = R.string.contentDescLogo)
-            )
-            Text(
-                modifier = Modifier
-                    .padding(top = 14.dp),
-                text = stringResource(id = R.string.app_name),
-                fontFamily = Actay,
-                fontWeight = FontWeight.W700,
-                fontSize = 24.sp,
-                color = WhiteColor
-            )
-            Text(
-                modifier = Modifier
-                    .padding(start = 43.dp, end = 43.dp, top = 38.dp)
-                    .width(234.dp),
-                text = stringResource(id = R.string.subtitle_login_screen),
-                fontFamily = Actay,
-                fontWeight = FontWeight.W400,
-                fontSize = 20.sp,
-                textAlign = TextAlign.Center,
-                color = Gray300Color
-            )
-        }
-    }
-}
-
-@OptIn(ExperimentalMaterialApi::class)
-@Composable
-fun BottomSheet(bottomSheetScaffoldState: BottomSheetScaffoldState, coroutineScope: CoroutineScope){
-    BottomSheetScaffold(
-        scaffoldState = bottomSheetScaffoldState,
-        backgroundColor = Color.Transparent,
-        sheetContent = {
-            Box(
-                Modifier
-                    .fillMaxWidth()
-                    .height(200.dp)
-            ) {
-                Text(text = "Hello from sheet")
-            }
-        }, sheetPeekHeight = 0.dp
-    ) {
-        Button(onClick = {
-            coroutineScope.launch {
-
-                if (bottomSheetScaffoldState.bottomSheetState.isCollapsed) {
-                    bottomSheetScaffoldState.bottomSheetState.expand()
-                } else {
-                    bottomSheetScaffoldState.bottomSheetState.collapse()
-                }
-            }
-        }) {
-            Text(text = "Expand/Collapse Bottom Sheet")
         }
     }
 }

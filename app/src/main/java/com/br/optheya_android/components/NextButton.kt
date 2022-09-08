@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import com.br.optheya_android.R
 import com.br.optheya_android.ui.theme.SelectedBulletColor
 
+//TODO: FAZER CLICK DO BOTAÃO
 @Composable
 fun NextButton(){
     Card(

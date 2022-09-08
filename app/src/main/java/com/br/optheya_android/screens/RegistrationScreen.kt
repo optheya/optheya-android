@@ -41,7 +41,11 @@ fun MainRegistrationContent(navController: NavController) {
         color = Gray100Color
     ) {
         Column {
-            TopBar()
+            TopBar(
+                onClick = {
+                    Log.d("TOPBAR", "MainRegistrationContent: Bck clicket")
+                }
+            )
             HeadersLabelToScreens(
                 title = "Faça parte da Optheya!",
                 subtitle = "Cadastre-se para experiências incríveis!"

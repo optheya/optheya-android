@@ -25,16 +25,19 @@ import com.br.optheya_android.ui.theme.PurpleSolidColor
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun LoginEmailScreen(navController: NavController) {
+fun NewPasswordScreen(navController: NavController) {
     Scaffold {
-        MainLoginEmailContent(navController)
+//        MainNewPasswordContent(navController)
+        MainNewPasswordContent()
     }
 }
 
 //TODO: Remover string para arquivo de strings
 
 @Composable
-fun MainLoginEmailContent(navController: NavController) {
+@Preview
+//fun MainNewPasswordContent(navController: NavController) {
+fun MainNewPasswordContent() {
     Surface(
         modifier = Modifier
             .fillMaxSize(),
@@ -43,56 +46,36 @@ fun MainLoginEmailContent(navController: NavController) {
         Column {
             TopBar(
                 onClick = {
-                    Log.d("TOPBAR", "MainLoginEmailContent: Bck clicket")
+                    Log.d("TOPBAR", "MainNewPasswordContent: Bck clicket")
                 }
             )
             HeadersLabelToScreens(
-                title = "Bem-vindo de volta! \uD83D\uDC4B",
-                subtitle = "Faça login para experiências incríveis!"
+                title = "Redefina sua senha",
+                subtitle = "Crie uma nova senha"
             )
             Column(
                 modifier = Modifier
                     .padding(start = 15.dp, end = 15.dp)
             ) {
                 EditText(
-                    labelTitle = "Email",
-                    labelPlaceholdder = "Seu email cadastrado",
-                    keyboardType = KeyboardType.Email
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                EditText(
-                    labelTitle = "Senha",
+                    labelTitle = "Nova senha",
                     labelPlaceholdder = "******",
                     showEndIcon = true,
                     icon = R.drawable.ic_baseline_remove_red_eye_24, //TODO: MUDAR O ICONE E MUDAR A VISIBILIDADE DA SENHA
                     keyboardType = KeyboardType.Password
                 )
-                Column(
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.End,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                ) {
-                    TextButton(onClick = { }) {
-                        Text(
-                            text = "Esqueceu?",
-                            color = PurpleSolidColor,
-                            fontSize = 12.sp,
-                            fontFamily = Actay,
-                            fontWeight = FontWeight.W400
-                        )
-                    }
-                }
-
-                PrimaryButton(label = "Fazer Login", onClick = {
-                    Log.d(
-                        "LOGIN EMAIL SCREEN",
-                        "MainLoginEmailContent: fazer login clicked"
-                        )
-                    }
+                
+                EditText(
+                    labelTitle = "Confirme a nova senha",
+                    labelPlaceholdder = "******",
+                    showEndIcon = true,
+                    icon = R.drawable.ic_baseline_remove_red_eye_24, //TODO: MUDAR O ICONE E MUDAR A VISIBILIDADE DA SENHA
+                    keyboardType = KeyboardType.Password
                 )
-                Spacer(modifier = Modifier.height(14.dp))
-                LabelWithClick(label = "Ainda não tem uma conta? ", linkLabel = "Cadastrar")
+
+                PrimaryButton(label = "Redefinir senha") {
+                    Log.d("REDEFINIR", "MainNewPasswordContent: redefinir clicket")
+                }
             }
         }
     }

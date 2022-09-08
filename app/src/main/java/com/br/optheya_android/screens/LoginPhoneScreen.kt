@@ -25,16 +25,19 @@ import com.br.optheya_android.ui.theme.PurpleSolidColor
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun LoginEmailScreen(navController: NavController) {
+fun LoginPhoneScreen(navController: NavController) {
     Scaffold {
-        MainLoginEmailContent(navController)
+//        MainLoginPhoneContent(navController)
+        MainLoginPhoneContent()
     }
 }
 
 //TODO: Remover string para arquivo de strings
 
 @Composable
-fun MainLoginEmailContent(navController: NavController) {
+@Preview
+fun MainLoginPhoneContent() {
+//fun MainLoginPhoneContent(navController: NavController) {
     Surface(
         modifier = Modifier
             .fillMaxSize(),
@@ -48,46 +51,22 @@ fun MainLoginEmailContent(navController: NavController) {
             )
             HeadersLabelToScreens(
                 title = "Bem-vindo de volta! \uD83D\uDC4B",
-                subtitle = "Faça login para experiências incríveis!"
+                subtitle = "Faça login com seu número de celular"
             )
             Column(
                 modifier = Modifier
                     .padding(start = 15.dp, end = 15.dp)
             ) {
                 EditText(
-                    labelTitle = "Email",
-                    labelPlaceholdder = "Seu email cadastrado",
-                    keyboardType = KeyboardType.Email
+                    labelTitle = "Celular",
+                    labelPlaceholdder = "Insira seu número de celular",
+                    keyboardType = KeyboardType.Phone
                 )
-                Spacer(modifier = Modifier.height(16.dp))
-                EditText(
-                    labelTitle = "Senha",
-                    labelPlaceholdder = "******",
-                    showEndIcon = true,
-                    icon = R.drawable.ic_baseline_remove_red_eye_24, //TODO: MUDAR O ICONE E MUDAR A VISIBILIDADE DA SENHA
-                    keyboardType = KeyboardType.Password
-                )
-                Column(
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.End,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                ) {
-                    TextButton(onClick = { }) {
-                        Text(
-                            text = "Esqueceu?",
-                            color = PurpleSolidColor,
-                            fontSize = 12.sp,
-                            fontFamily = Actay,
-                            fontWeight = FontWeight.W400
-                        )
-                    }
-                }
 
-                PrimaryButton(label = "Fazer Login", onClick = {
+                PrimaryButton(label = "Enviar código", onClick = {
                     Log.d(
-                        "LOGIN EMAIL SCREEN",
-                        "MainLoginEmailContent: fazer login clicked"
+                        "ENVIAR CÓDIGO",
+                        "MainLoginPhoneContent: ENVIAR CODIGO clicked"
                         )
                     }
                 )

@@ -23,8 +23,7 @@ import com.br.optheya_android.R
 import com.br.optheya_android.ui.theme.Gray900Color
 
 @Composable
-@Preview
-fun TopBar(){
+fun TopBar(onClick: () -> Unit){
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -33,13 +32,11 @@ fun TopBar(){
     ) {
         Row() {
             IconButton(
-                onClick = {
-
-                },
+                onClick = onClick,
             ){
                 Icon(
                     Icons.Filled.ArrowBack,
-                    "contentDescription",
+                    "contentDescription", //TODO: ADD DDESCRIPTION ACCESSIBLE
                     tint = Gray900Color)
             }
         }
