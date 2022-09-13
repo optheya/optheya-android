@@ -10,6 +10,7 @@ val Teal200 = Color(0xFF03DAC5)
 // OPTHEYA COLOR PALLET
 
 val PrimaryPrincipalColor = Color(0xFF430084)
+val SecundaryPrincipalColor = Color(0xFF7BCDFF)
 val PrimaryCrystalClearColor = Color(0xFFD9CCE6)
 val MainSuccessColor = Color(0xFF00FD8D)
 val WhiteColor = Color(0xFFFFFFFF)

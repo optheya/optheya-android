@@ -8,9 +8,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -19,11 +17,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.br.optheya_android.ui.theme.Gray100Color
 import com.br.optheya_android.R
 import com.br.optheya_android.components.*
-import com.br.optheya_android.ui.theme.Actay
-import com.br.optheya_android.ui.theme.PurpleSolidColor
+import com.br.optheya_android.ui.theme.*
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -36,8 +32,6 @@ fun CodePhoneLoginScreen(navController: NavController) {
 }
 
 //TODO: Remover string para arquivo de strings
-
-//TODO: arrumar condicional dde mostrar emil ou sms
 
 @Composable
 fun MainCodePhoneLoginContent(navController: NavController, phone: String) {
@@ -62,9 +56,38 @@ fun MainCodePhoneLoginContent(navController: NavController, phone: String) {
             ) {
 
 
-                //TODO: QUADROS CAMPO PARA DIGIATR CODIGO RECEBIDO
+                Column(
+                    modifier = Modifier
+                        .padding(start = 43.dp, end = 43.dp, top = 11.dp)
+                ) {
+                    CodeVerifierField()
+                }
 
-                //TODO: LABEL COM CONTADOR
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 33.dp, bottom = 44.dp)
+                ) {
+                    Text(
+                        text = "Reenviar código em",
+                        fontFamily = Actay,
+                        fontWeight = FontWeight.W400,
+                        fontSize = 14.sp,
+                        color = Gray600Color
+                    )
+
+                    //TODO: CODAR A RODAGEM DO CONTADOR
+                    Text(
+                        text = " 0s",
+                        fontFamily = Actay,
+                        fontWeight = FontWeight.W400,
+                        fontSize = 14.sp,
+                        color = SecundaryPrincipalColor
+                    )
+                }
+
 
                 //TODO: ABRIR BORTAO DDE REENVIAR ASSIM QUE ACABAR O CONTADOR
 
