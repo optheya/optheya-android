@@ -91,7 +91,7 @@ fun MainCodePhoneLoginContent(navController: NavController, phone: String) {
 
                 //TODO: ABRIR BORTAO DDE REENVIAR ASSIM QUE ACABAR O CONTADOR
 
-                SecundaryButton(label = "Reenviar Código") {
+                SecundaryButton(label = "Reenviar Código", Modifier.fillMaxWidth()) {
                     Log.d("Reenviar", "MainInsertACodeRecoveryContent: REENVIAR clicket")
                 }
 

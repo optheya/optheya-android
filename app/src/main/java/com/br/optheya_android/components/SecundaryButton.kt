@@ -27,8 +27,7 @@ import com.br.optheya_android.ui.theme.WhiteColor
 @Composable
 fun SecundaryButton(label: String, modifier: Modifier = Modifier, onClick: () -> Unit){
     Button(
-        modifier = modifier
-            .fillMaxWidth(),
+        modifier = modifier,
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(Gray100Color),
         border = BorderStroke(width = 1.dp, color = PrimaryPrincipalColor),

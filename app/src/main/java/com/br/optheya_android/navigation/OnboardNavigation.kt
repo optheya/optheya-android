@@ -32,7 +32,7 @@ fun OnboardNavigation(){
         ){ backStackEntry ->
             TutorialScreen(
                 navController = navController,
-                skipTutorial = OnboardScreens.CodePhoneLoginScreen.name
+                skipTutorial = OnboardScreens.LoginScreen.name
             )
         }
 
@@ -40,6 +40,14 @@ fun OnboardNavigation(){
             route = OnboardScreens.LoginScreen.name
         ){ backStackEntry ->
             LoginScreen(
+                navController = navController,
+            )
+        }
+
+        composable(
+            route = OnboardScreens.OtherOptionsLogin.name
+        ){ backStackEntry ->
+            OtherOptionsLoginScreen(
                 navController = navController,
             )
         }
@@ -54,6 +62,10 @@ fun OnboardNavigation(){
 
         composable(route = OnboardScreens.CodePhoneLoginScreen.name) {
             CodePhoneLoginScreen(navController = navController )
+        }
+
+        composable(route = OnboardScreens.LoginPhoneScreen.name) {
+            LoginPhoneScreen(navController = navController)
         }
     }
 }

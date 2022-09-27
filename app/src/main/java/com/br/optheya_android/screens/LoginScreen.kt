@@ -56,6 +56,18 @@ fun LoginScreen(navController: NavController) {
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MainLoginContent(navController: NavController, coroutineScope: CoroutineScope, bottomSheetScaffoldState: BottomSheetScaffoldState) {
+
+    val sheetState = rememberModalBottomSheetState(
+        initialValue = ModalBottomSheetValue.Hidden,
+        confirmStateChange = { it != ModalBottomSheetValue.HalfExpanded }
+    )
+    val coroutineScope = rememberCoroutineScope()
+
+    BackHandler(sheetState.isVisible) {
+        coroutineScope.launch { sheetState.hide() }
+    }
+
+
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -65,14 +77,14 @@ fun MainLoginContent(navController: NavController, coroutineScope: CoroutineScop
             verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            LoginOptions(navController = navController, coroutineScope = coroutineScope, bottomSheetScaffoldState = bottomSheetScaffoldState)
+            LoginOptions(navController = navController, coroutineScope = coroutineScope, bottomSheetScaffoldState = bottomSheetScaffoldState, sheetState = sheetState)
         }
     }
 }
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun LoginOptions(navController: NavController, coroutineScope: CoroutineScope, bottomSheetScaffoldState: BottomSheetScaffoldState){
+fun LoginOptions(navController: NavController, coroutineScope: CoroutineScope, bottomSheetScaffoldState: BottomSheetScaffoldState,  sheetState: ModalBottomSheetState){
 
     var stateModal by remember {
         mutableStateOf(false)
@@ -107,7 +119,7 @@ fun LoginOptions(navController: NavController, coroutineScope: CoroutineScope, b
                 Spacer(modifier = Modifier.width(9.dp))
 
                 SecundaryButton(label = "Outras opções") {
-                    Log.d("OUTRAS OPÇÕES", "LoginOptions: OUTRAS OPÇOES CLICKET")
+                    navController.navigate(OnboardScreens.OtherOptionsLogin.name)
                 }
             }
             Text(

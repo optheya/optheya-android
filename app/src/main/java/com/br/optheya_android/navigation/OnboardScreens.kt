@@ -14,7 +14,8 @@ enum class OnboardScreens {
     NewPasswordScreen,
     RegistrationScreen,
     UseTermsScreen,
-    PolicyPrivacityScreen;
+    PolicyPrivacityScreen,
+    OtherOptionsLogin;
 
     companion object {
         fun fromRoute(route: String?): OnboardScreens =
@@ -34,6 +35,7 @@ enum class OnboardScreens {
                 RegistrationScreen.name -> RegistrationScreen
                 UseTermsScreen.name -> UseTermsScreen
                 PolicyPrivacityScreen.name -> PolicyPrivacityScreen
+                OtherOptionsLogin.name -> OtherOptionsLogin
                 null -> SplashScreen
                 else -> throw IllegalArgumentException()
             }

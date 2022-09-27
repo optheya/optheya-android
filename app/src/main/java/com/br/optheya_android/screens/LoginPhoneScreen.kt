@@ -20,6 +20,7 @@ import androidx.navigation.NavController
 import com.br.optheya_android.ui.theme.Gray100Color
 import com.br.optheya_android.R
 import com.br.optheya_android.components.*
+import com.br.optheya_android.navigation.OnboardScreens
 import com.br.optheya_android.ui.theme.Actay
 import com.br.optheya_android.ui.theme.PurpleSolidColor
 
@@ -27,17 +28,14 @@ import com.br.optheya_android.ui.theme.PurpleSolidColor
 @Composable
 fun LoginPhoneScreen(navController: NavController) {
     Scaffold {
-//        MainLoginPhoneContent(navController)
-        MainLoginPhoneContent()
+        MainLoginPhoneContent(navController)
     }
 }
 
 //TODO: Remover string para arquivo de strings
 
 @Composable
-@Preview
-fun MainLoginPhoneContent() {
-//fun MainLoginPhoneContent(navController: NavController) {
+fun MainLoginPhoneContent(navController: NavController) {
     Surface(
         modifier = Modifier
             .fillMaxSize(),
@@ -64,11 +62,8 @@ fun MainLoginPhoneContent() {
                 )
 
                 PrimaryButton(label = "Enviar código", onClick = {
-                    Log.d(
-                        "ENVIAR CÓDIGO",
-                        "MainLoginPhoneContent: ENVIAR CODIGO clicked"
-                        )
-                    }
+                    navController.navigate(OnboardScreens.CodePhoneLoginScreen.name)
+                }
                 )
                 Spacer(modifier = Modifier.height(14.dp))
                 LabelWithClick(label = "Ainda não tem uma conta? ", linkLabel = "Cadastrar")
