@@ -43,7 +43,7 @@ fun MainRegistrationContent(navController: NavController) {
         Column {
             TopBar(
                 onClick = {
-                    Log.d("TOPBAR", "MainRegistrationContent: Bck clicket")
+                    navController.popBackStack()
                 }
             )
             HeadersLabelToScreens(
@@ -92,7 +92,7 @@ fun MainRegistrationContent(navController: NavController) {
                     }
                 )
                 Spacer(modifier = Modifier.height(14.dp))
-                LabelWithClick(label = "Já tem conta? ", linkLabel = "Fazer Login")
+//                LabelWithClick(label = "Já tem conta? ", linkLabel = "Fazer Login")
             }
         }
     }

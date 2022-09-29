@@ -16,6 +16,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,9 +38,6 @@ fun PolicyPrivacityScreen(navController: NavController, context: Context) {
     }
 }
 
-//TODO: Remover string para arquivo de strings
-
-
 @Composable
 fun MainPolicyPrivacityContent(navController: NavController, context: Context) {
     Surface(
@@ -50,12 +48,12 @@ fun MainPolicyPrivacityContent(navController: NavController, context: Context) {
         Column {
             TopBar(
                 onClick = {
-                    Log.d("TOPBAR", "MainPolicyPrivacityContent: Bck clicket")
+                    navController.popBackStack()
                 }
             )
             HeadersLabelToScreens(
-                title = "Politicas de Privacidade",
-                subtitle = ""
+                title = stringResource(id = R.string.privacity_policy),
+                subtitle = stringResource(id = R.string.string_nula)
             )
             Column(
                 modifier = Modifier
@@ -65,7 +63,7 @@ fun MainPolicyPrivacityContent(navController: NavController, context: Context) {
 
                 LoadUrl(url = "https://karonty.tech/", context = context) //TODO: PASSAR A URL DO TERMOS
 
-                PrimaryButton(label = "Aceitar e continuar") {
+                PrimaryButton(label = stringResource(id = R.string.acc_and_continue)) {
                     Log.d("ACEITAR ECONTINUAR", "MainUseTermsContent: acc and cont clicket")
                 }
             }

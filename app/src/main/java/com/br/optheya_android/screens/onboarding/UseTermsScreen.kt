@@ -1,33 +1,24 @@
-package com.br.optheya_android.screens
+package com.br.optheya_android.screens.onboarding
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
-import android.webkit.WebView
-import android.webkit.WebViewClient
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
-import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
-import com.br.optheya_android.ui.theme.Gray100Color
 import com.br.optheya_android.R
-import com.br.optheya_android.components.*
-import com.br.optheya_android.ui.theme.Actay
-import com.br.optheya_android.ui.theme.PurpleSolidColor
+import com.br.optheya_android.components.HeadersLabelToScreens
+import com.br.optheya_android.components.LoadUrl
+import com.br.optheya_android.components.PrimaryButton
+import com.br.optheya_android.components.TopBar
+import com.br.optheya_android.ui.theme.Gray100Color
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -36,9 +27,6 @@ fun UseTermsScreen(navController: NavController, context: Context) {
         MainUseTermsContent(navController = navController, context = context)
     }
 }
-
-//TODO: Remover string para arquivo de strings
-
 
 @Composable
 fun MainUseTermsContent(navController: NavController, context: Context) {
@@ -50,12 +38,12 @@ fun MainUseTermsContent(navController: NavController, context: Context) {
         Column {
             TopBar(
                 onClick = {
-                    Log.d("TOPBAR", "MainUseTermsContent: Bck clicket")
+                    navController.popBackStack()
                 }
             )
             HeadersLabelToScreens(
-                title = "Termos de Uso",
-                subtitle = ""
+                title = stringResource(id = R.string.use_terms),
+                subtitle = stringResource(id = R.string.string_nula)
             )
             Column(
                 modifier = Modifier
@@ -65,22 +53,10 @@ fun MainUseTermsContent(navController: NavController, context: Context) {
 
                 LoadUrl(url = "https://karonty.tech/", context = context) //TODO: PASSAR A URL DO TERMOS
 
-                PrimaryButton(label = "Aceitar e continuar") {
+                PrimaryButton(label = stringResource(id = R.string.acc_and_continue)) {
                     Log.d("ACEITAR ECONTINUAR", "MainUseTermsContent: acc and cont clicket")
                 }
             }
         }
     }
-}
-
-@Composable
-fun loadWebUrl(url: String, context: Context) {
-
-    AndroidView(factory = {
-        WebView(context).apply {
-            webViewClient = WebViewClient()
-
-            loadUrl(url)
-        }
-    })
 }

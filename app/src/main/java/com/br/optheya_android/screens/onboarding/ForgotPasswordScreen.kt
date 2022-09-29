@@ -1,21 +1,12 @@
-package com.br.optheya_android.screens
+package com.br.optheya_android.screens.onboarding
 
 import android.annotation.SuppressLint
-import android.util.Log
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.br.optheya_android.R
 import com.br.optheya_android.components.*
@@ -30,8 +21,6 @@ fun ForgotPasswordScreen(navController: NavController) {
     }
 }
 
-//TODO: Remover string para arquivo de strings
-
 @Composable
 fun MainForgotPasswordContent(navController: NavController) {
     Surface(
@@ -42,19 +31,19 @@ fun MainForgotPasswordContent(navController: NavController) {
         Column {
             TopBar(
                 onClick = {
-                    Log.d("OnClick", "MainForgotPasswordContent: Bck clicket")
+                   navController.popBackStack()
                 }
             )
             Spacer(modifier = Modifier.height(24.dp))
             HeadersLabelToScreens(
-                title = "Esqueceu sua senha?",
-                subtitle = "Selecione a forma de reuperação"
+                title = stringResource(id = R.string.forgot_you_pass),
+                subtitle = stringResource(id = R.string.select_recovery_form)
             )
-            LargeButtonWithIcon(label = "Via SMS", icon = R.drawable.ic_icon_rec_sms) {
+            LargeButtonWithIcon(label = stringResource(id = R.string.sms_form), icon = R.drawable.ic_icon_rec_sms) {
                 navController.navigate(OnboardScreens.InsertACodeRecoveryScreen.name)
             }
 
-            LargeButtonWithIcon(label = "Via E-mail", icon = R.drawable.ic_icon_rec_email) {
+            LargeButtonWithIcon(label = stringResource(id = R.string.email_form), icon = R.drawable.ic_icon_rec_email) {
                 navController.navigate(OnboardScreens.InsertACodeRecoveryScreen.name)
             }
         }

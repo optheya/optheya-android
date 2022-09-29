@@ -2,11 +2,11 @@ package com.br.optheya_android.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.br.optheya_android.screens.*
+import com.br.optheya_android.screens.onboarding.*
 import kotlinx.coroutines.delay
 
 @Composable
@@ -84,6 +84,10 @@ fun OnboardNavigation(){
 
         composable(route = OnboardScreens.NewPasswordScreen.name) {
             NewPasswordScreen(navController = navController)
+        }
+
+        composable(route = OnboardScreens.RegistrationScreen.name) {
+            RegistrationScreen(navController = navController)
         }
     }
 }

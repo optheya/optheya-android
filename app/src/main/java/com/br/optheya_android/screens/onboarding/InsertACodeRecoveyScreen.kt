@@ -8,9 +8,12 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,22 +22,35 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.br.optheya_android.R
 import com.br.optheya_android.components.*
+import com.br.optheya_android.navigation.OnboardScreens
 import com.br.optheya_android.ui.theme.*
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-
-fun CodePhoneLoginScreen(navController: NavController) {
+fun InsertACodeRecoveryScreen(navController: NavController, isSMS: Boolean, isEmail: Boolean) {
     Scaffold {
-//        MainInsertACodeRecoveryContent(navController)
-        MainCodePhoneLoginContent(navController = navController, phone = "(11)9 9999-9999")
+        MainInsertACodeRecoveryContent(navController, isSMS, isEmail)  //TODO: RECCEBER O QUE É POR PARAMETRO NO NAVIGATION
     }
 }
 
-//TODO: Remover string para arquivo de strings
+
+//TODO: arrumar condicional dde mostrar emil ou sms
 
 @Composable
-fun MainCodePhoneLoginContent(navController: NavController, phone: String) {
+fun MainInsertACodeRecoveryContent(navController: NavController, isEmail: Boolean, isSMS: Boolean) {
+    var subtitleCompl  = remember {
+        mutableStateOf("")
+    }
+    if (isEmail) {
+        subtitleCompl = remember {
+            mutableStateOf("exemple@example.com")
+        }
+    }  else if(isSMS){
+        subtitleCompl = remember {
+            mutableStateOf("(11)99999-9999")
+        }
+    }
+
     Surface(
         modifier = Modifier
             .fillMaxSize(),
@@ -43,12 +59,12 @@ fun MainCodePhoneLoginContent(navController: NavController, phone: String) {
         Column {
             TopBar(
                 onClick = {
-                    Log.d("TOPBAR", "MainCodePhoneLoginContent: Bck clicket")
+                   navController.popBackStack()
                 }
             )
             HeadersLabelToScreens(
-                title = "Insira o código",
-                subtitle = "O código foi enviado para ${phone}"
+                title = stringResource(id = R.string.inside_code),
+                subtitle = "O código foi enviado para ${subtitleCompl.value}" //TODO: FAZER STRING COM INTERPOLAÇÃO
             )
             Column(
                 modifier = Modifier
@@ -71,15 +87,14 @@ fun MainCodePhoneLoginContent(navController: NavController, phone: String) {
                         .padding(top = 33.dp, bottom = 44.dp)
                 ) {
                     Text(
-                        text = "Reenviar código em",
+                        text = stringResource(id = R.string.resend_code_time),
                         fontFamily = Actay,
                         fontWeight = FontWeight.W400,
                         fontSize = 14.sp,
                         color = Gray600Color
                     )
 
-                    //TODO: CODAR A RODAGEM DO CONTADOR
-                    Text(
+                    Text( //TODO: CODAR A RODAGEM DO CONTADOR
                         text = " 0s",
                         fontFamily = Actay,
                         fontWeight = FontWeight.W400,
@@ -89,14 +104,14 @@ fun MainCodePhoneLoginContent(navController: NavController, phone: String) {
                 }
 
 
-                //TODO: ABRIR BORTAO DDE REENVIAR ASSIM QUE ACABAR O CONTADOR
 
-                SecundaryButton(label = "Reenviar Código", Modifier.fillMaxWidth()) {
+                SecundaryButton(label = stringResource(id = R.string.resend_code_btn), modifier = Modifier.fillMaxWidth()) {
                     Log.d("Reenviar", "MainInsertACodeRecoveryContent: REENVIAR clicket")
                 }
 
-                PrimaryButton(label = "Verificar") {
-                    Log.d("VERIFICAR", "MainInsertACodeRecoveryContent: VERIFICAR clicket")
+                PrimaryButton(label = stringResource(id = R.string.verify)) {
+                    //TODO: Deve haver a verificação do codigo digitado e com isso, se tiver ok mandar para apágina d new ppass
+                    navController.navigate(OnboardScreens.NewPasswordScreen.name)
                 }
             }
         }

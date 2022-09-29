@@ -15,4 +15,41 @@
     <string name="avatar">avatar</string>
     <string name="active_location">Ative a localização</string>
     <string name="choose_xp">Busque por experiências</string>
+
+    <string name="inside_code">Insira o código</string>
+    <string name="resend_code_time">Reenviar código em</string>
+
+    <string name="forgot_you_pass">Esqueceu sua senha?</string>
+    <string name="select_recovery_form">Selecione a forma de reuperação</string>
+    <string name="sms_form">Via SMS</string>
+    <string name="email_form">Via E-mail</string>
+
+    <string name="resend_code_btn">Reenviar Código</string>
+    <string name="verify">Verificar</string>
+
+    <string name="welcome_back">Bem-vindo de volta! 👋</string>
+    <string name="make_login_xp">Faça login para experiências incríveis!</string>
+    <string name="email_label">E-mail</string>
+    <string name="pass_label">Senha</string>
+    <string name="email_hint">Seu email cadastrado</string>
+    <string name="pass_hint">******</string>
+    <string name="forgot">Esqueceu?</string>
+    <string name="make_login_btn">Fazer Login</string>
+    <string name="dont_have_acc">Ainda não tem uma conta?</string>
+    <string name="register">Cadastrar</string>
+
+    <string name="use_terms">Termos de Uso</string>
+    <string name="privacity_policy">Politicas de Privacidade</string>
+    <string name="string_nula"> </string>
+    <string name="acc_and_continue">Aceitar e continuar</string>
+
+    <string name="redefine_pass">Redefina sua senha</string>
+    <string name="create_new_pass">Crie uma nova senha</string>
+    <string name="new_pass">Nova senha</string>
+    <string name="confirm_new_pass">Confirme a nova senha</string>
+
+    <string name="make_login_phone">Faça login com seu número de celular</string>
+    <string name="phone">Celular</string>
+    <string name="insert_phone_number">Insira seu número de celular</string>
+    <string name="send_code">Enviar código</string>
 </resources>
