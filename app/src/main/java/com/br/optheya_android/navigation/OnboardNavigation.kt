@@ -67,5 +67,23 @@ fun OnboardNavigation(){
         composable(route = OnboardScreens.LoginPhoneScreen.name) {
             LoginPhoneScreen(navController = navController)
         }
+
+        composable(route = OnboardScreens.ForgotPasswordScreen.name) {
+            ForgotPasswordScreen(navController = navController)
+        }
+
+        composable(
+            route = OnboardScreens.InsertACodeRecoveryScreen.name
+        ){ backStackEntry ->
+            InsertACodeRecoveryScreen(
+                navController = navController,
+                isSMS = true,
+                isEmail = false
+            )
+        }
+
+        composable(route = OnboardScreens.NewPasswordScreen.name) {
+            NewPasswordScreen(navController = navController)
+        }
     }
 }

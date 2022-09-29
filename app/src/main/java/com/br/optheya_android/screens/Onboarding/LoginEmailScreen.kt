@@ -74,7 +74,9 @@ fun MainLoginEmailContent(navController: NavController) {
                     modifier = Modifier
                         .fillMaxWidth()
                 ) {
-                    TextButton(onClick = { }) {
+                    TextButton(onClick = {
+                        navController.navigate(OnboardScreens.ForgotPasswordScreen.name)
+                    }) {
                         Text(
                             text = "Esqueceu?",
                             color = PurpleSolidColor,

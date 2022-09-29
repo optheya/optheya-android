@@ -27,17 +27,14 @@ import com.br.optheya_android.ui.theme.PurpleSolidColor
 @Composable
 fun NewPasswordScreen(navController: NavController) {
     Scaffold {
-//        MainNewPasswordContent(navController)
-        MainNewPasswordContent()
+        MainNewPasswordContent(navController)
     }
 }
 
 //TODO: Remover string para arquivo de strings
 
 @Composable
-@Preview
-//fun MainNewPasswordContent(navController: NavController) {
-fun MainNewPasswordContent() {
+fun MainNewPasswordContent(navController: NavController) {
     Surface(
         modifier = Modifier
             .fillMaxSize(),
