@@ -19,24 +19,21 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.br.optheya_android.R
 import com.br.optheya_android.components.*
+import com.br.optheya_android.navigation.OnboardScreens
 import com.br.optheya_android.ui.theme.*
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-//fun ForgotPasswordScreen(navController: NavController) {
-fun ForgotPasswordScreen(){
+fun ForgotPasswordScreen(navController: NavController) {
     Scaffold {
-        MainForgotPasswordContent()
-//        MainForgotPasswordContent(navController)
+        MainForgotPasswordContent(navController)
     }
 }
 
 //TODO: Remover string para arquivo de strings
 
 @Composable
-@Preview
-//fun MainForgotPasswordContent(navController: NavController) {
-fun MainForgotPasswordContent() {
+fun MainForgotPasswordContent(navController: NavController) {
     Surface(
         modifier = Modifier
             .fillMaxSize(),
@@ -54,11 +51,11 @@ fun MainForgotPasswordContent() {
                 subtitle = "Selecione a forma de reuperação"
             )
             LargeButtonWithIcon(label = "Via SMS", icon = R.drawable.ic_icon_rec_sms) {
-                Log.d("FOTGOT SMS", "MainForgotPasswordContent: SMS BTN CLICKET")
+                navController.navigate(OnboardScreens.InsertACodeRecoveryScreen.name)
             }
 
             LargeButtonWithIcon(label = "Via E-mail", icon = R.drawable.ic_icon_rec_email) {
-                Log.d("FOTGOT EMAIL", "MainForgotPasswordContent: EMAIL BTN CLICKET")
+                navController.navigate(OnboardScreens.InsertACodeRecoveryScreen.name)
             }
         }
     }

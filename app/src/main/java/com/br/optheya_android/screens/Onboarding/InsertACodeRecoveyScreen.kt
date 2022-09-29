@@ -19,18 +19,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.br.optheya_android.ui.theme.Gray100Color
 import com.br.optheya_android.R
 import com.br.optheya_android.components.*
-import com.br.optheya_android.ui.theme.Actay
-import com.br.optheya_android.ui.theme.PurpleSolidColor
+import com.br.optheya_android.navigation.OnboardScreens
+import com.br.optheya_android.ui.theme.*
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun InsertACodeRecoveryScreen(navController: NavController) {
+fun InsertACodeRecoveryScreen(navController: NavController, isSMS: Boolean, isEmail: Boolean) {
     Scaffold {
-//        MainInsertACodeRecoveryContent(navController)
-        MainInsertACodeRecoveryContent(isSMS = false, isEmail = true)  //TODO: RECCEBER O QUE É POR PARAMETRO NO NAVIGATION
+        MainInsertACodeRecoveryContent(navController, isSMS, isEmail)  //TODO: RECCEBER O QUE É POR PARAMETRO NO NAVIGATION
     }
 }
 
@@ -39,9 +37,7 @@ fun InsertACodeRecoveryScreen(navController: NavController) {
 //TODO: arrumar condicional dde mostrar emil ou sms
 
 @Composable
-@Preview
-//fun MainInsertACodeRecoveryContent(navController: NavController) {
-fun MainInsertACodeRecoveryContent(isEmail: Boolean = true, isSMS: Boolean = false) {
+fun MainInsertACodeRecoveryContent(navController: NavController, isEmail: Boolean, isSMS: Boolean) {
     var subtitleCompl  = remember {
         mutableStateOf("")
     }
@@ -76,17 +72,46 @@ fun MainInsertACodeRecoveryContent(isEmail: Boolean = true, isSMS: Boolean = fal
             ) {
 
 
-                //TODO: QUADROS CAMPO PARA DIGIATR CODIGO RECEBIDO
+                Column(
+                    modifier = Modifier
+                        .padding(start = 43.dp, end = 43.dp, top = 11.dp)
+                ) {
+                    CodeVerifierField()
+                }
 
-                //TODO: LABEL COM CONTADOR
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 33.dp, bottom = 44.dp)
+                ) {
+                    Text(
+                        text = "Reenviar código em",
+                        fontFamily = Actay,
+                        fontWeight = FontWeight.W400,
+                        fontSize = 14.sp,
+                        color = Gray600Color
+                    )
+
+                    //TODO: CODAR A RODAGEM DO CONTADOR
+                    Text(
+                        text = " 0s",
+                        fontFamily = Actay,
+                        fontWeight = FontWeight.W400,
+                        fontSize = 14.sp,
+                        color = SecundaryPrincipalColor
+                    )
+                }
 
 
-                SecundaryButton(label = "Reenviar Código") {
+
+                SecundaryButton(label = "Reenviar Código", modifier = Modifier.fillMaxWidth()) {
                     Log.d("Reenviar", "MainInsertACodeRecoveryContent: REENVIAR clicket")
                 }
 
                 PrimaryButton(label = "Verificar") {
-                    Log.d("VERIFICAR", "MainInsertACodeRecoveryContent: VERIFICAR clicket")
+                    navController.navigate(OnboardScreens.NewPasswordScreen.name)
                 }
             }
         }

@@ -20,6 +20,7 @@ import androidx.navigation.NavController
 import com.br.optheya_android.ui.theme.Gray100Color
 import com.br.optheya_android.R
 import com.br.optheya_android.components.*
+import com.br.optheya_android.navigation.OnboardScreens
 import com.br.optheya_android.ui.theme.Actay
 import com.br.optheya_android.ui.theme.PurpleSolidColor
 
@@ -73,7 +74,9 @@ fun MainLoginEmailContent(navController: NavController) {
                     modifier = Modifier
                         .fillMaxWidth()
                 ) {
-                    TextButton(onClick = { }) {
+                    TextButton(onClick = {
+                        navController.navigate(OnboardScreens.ForgotPasswordScreen.name)
+                    }) {
                         Text(
                             text = "Esqueceu?",
                             color = PurpleSolidColor,
@@ -85,10 +88,7 @@ fun MainLoginEmailContent(navController: NavController) {
                 }
 
                 PrimaryButton(label = "Fazer Login", onClick = {
-                    Log.d(
-                        "LOGIN EMAIL SCREEN",
-                        "MainLoginEmailContent: fazer login clicked"
-                        )
+                        navController.navigate(OnboardScreens.HomeScreen.name) // TODO: ADD O USUARIO A ÁRE ALOGADA
                     }
                 )
                 Spacer(modifier = Modifier.height(14.dp))

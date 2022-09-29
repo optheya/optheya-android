@@ -1,6 +1,7 @@
 package com.br.optheya_android.screens
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -27,6 +28,7 @@ import com.br.optheya_android.navigation.OnboardNavigation
 import com.br.optheya_android.ui.theme.*
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
+import com.google.ar.core.ArCoreApk
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

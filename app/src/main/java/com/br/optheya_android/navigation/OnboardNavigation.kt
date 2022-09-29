@@ -32,7 +32,7 @@ fun OnboardNavigation(){
         ){ backStackEntry ->
             TutorialScreen(
                 navController = navController,
-                skipTutorial = OnboardScreens.UseTermsScreen.name
+                skipTutorial = OnboardScreens.LoginScreen.name
             )
         }
 
@@ -40,6 +40,14 @@ fun OnboardNavigation(){
             route = OnboardScreens.LoginScreen.name
         ){ backStackEntry ->
             LoginScreen(
+                navController = navController,
+            )
+        }
+
+        composable(
+            route = OnboardScreens.OtherOptionsLogin.name
+        ){ backStackEntry ->
+            OtherOptionsLoginScreen(
                 navController = navController,
             )
         }
@@ -52,8 +60,30 @@ fun OnboardNavigation(){
             LoginEmailScreen(navController = navController)
         }
 
-        composable(route = OnboardScreens.UseTermsScreen.name) {
-            UseTermsScreen(navController = navController, context = LocalContext.current )
+        composable(route = OnboardScreens.CodePhoneLoginScreen.name) {
+            CodePhoneLoginScreen(navController = navController )
+        }
+
+        composable(route = OnboardScreens.LoginPhoneScreen.name) {
+            LoginPhoneScreen(navController = navController)
+        }
+
+        composable(route = OnboardScreens.ForgotPasswordScreen.name) {
+            ForgotPasswordScreen(navController = navController)
+        }
+
+        composable(
+            route = OnboardScreens.InsertACodeRecoveryScreen.name
+        ){ backStackEntry ->
+            InsertACodeRecoveryScreen(
+                navController = navController,
+                isSMS = true,
+                isEmail = false
+            )
+        }
+
+        composable(route = OnboardScreens.NewPasswordScreen.name) {
+            NewPasswordScreen(navController = navController)
         }
     }
 }

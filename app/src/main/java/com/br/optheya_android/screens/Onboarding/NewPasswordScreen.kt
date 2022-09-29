@@ -25,19 +25,16 @@ import com.br.optheya_android.ui.theme.PurpleSolidColor
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun LoginPhoneScreen(navController: NavController) {
+fun NewPasswordScreen(navController: NavController) {
     Scaffold {
-//        MainLoginPhoneContent(navController)
-        MainLoginPhoneContent()
+        MainNewPasswordContent(navController)
     }
 }
 
 //TODO: Remover string para arquivo de strings
 
 @Composable
-@Preview
-fun MainLoginPhoneContent() {
-//fun MainLoginPhoneContent(navController: NavController) {
+fun MainNewPasswordContent(navController: NavController) {
     Surface(
         modifier = Modifier
             .fillMaxSize(),
@@ -46,32 +43,36 @@ fun MainLoginPhoneContent() {
         Column {
             TopBar(
                 onClick = {
-                    Log.d("TOPBAR", "MainLoginEmailContent: Bck clicket")
+                    Log.d("TOPBAR", "MainNewPasswordContent: Bck clicket")
                 }
             )
             HeadersLabelToScreens(
-                title = "Bem-vindo de volta! \uD83D\uDC4B",
-                subtitle = "Faça login com seu número de celular"
+                title = "Redefina sua senha",
+                subtitle = "Crie uma nova senha"
             )
             Column(
                 modifier = Modifier
                     .padding(start = 15.dp, end = 15.dp)
             ) {
                 EditText(
-                    labelTitle = "Celular",
-                    labelPlaceholdder = "Insira seu número de celular",
-                    keyboardType = KeyboardType.Phone
+                    labelTitle = "Nova senha",
+                    labelPlaceholdder = "******",
+                    showEndIcon = true,
+                    icon = R.drawable.ic_baseline_remove_red_eye_24, //TODO: MUDAR O ICONE E MUDAR A VISIBILIDADE DA SENHA
+                    keyboardType = KeyboardType.Password
+                )
+                
+                EditText(
+                    labelTitle = "Confirme a nova senha",
+                    labelPlaceholdder = "******",
+                    showEndIcon = true,
+                    icon = R.drawable.ic_baseline_remove_red_eye_24, //TODO: MUDAR O ICONE E MUDAR A VISIBILIDADE DA SENHA
+                    keyboardType = KeyboardType.Password
                 )
 
-                PrimaryButton(label = "Enviar código", onClick = {
-                    Log.d(
-                        "ENVIAR CÓDIGO",
-                        "MainLoginPhoneContent: ENVIAR CODIGO clicked"
-                        )
-                    }
-                )
-                Spacer(modifier = Modifier.height(14.dp))
-                LabelWithClick(label = "Ainda não tem uma conta? ", linkLabel = "Cadastrar")
+                PrimaryButton(label = "Redefinir senha") {
+                    Log.d("REDEFINIR", "MainNewPasswordContent: redefinir clicket")
+                }
             }
         }
     }
