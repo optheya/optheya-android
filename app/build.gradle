@@ -76,6 +76,9 @@ dependencies {
     //ARCORE
     implementation 'com.google.ar:core:1.33.0'
 
+    //RATING BAR
+    implementation 'com.github.a914-gowtham:compose-ratingbar:1.2.3'
+
     testImplementation 'junit:junit:4.13.2'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
