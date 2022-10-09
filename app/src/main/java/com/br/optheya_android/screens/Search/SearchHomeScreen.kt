@@ -55,15 +55,15 @@ fun MainSearchHomeContent() {
                     fontWeight = FontWeight.W700,
                     fontSize = 20.sp
                 )
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalAlignment = Alignment.End
-                ) {
-                    MapBtn(
-                        onClick = { }
-                    )
-                }
+//                Column(
+//                    modifier = Modifier
+//                        .fillMaxWidth(),
+//                    horizontalAlignment = Alignment.End
+//                ) {
+//                    MapBtn(
+//                        onClick = { }
+//                    )
+//                }
             }
 
             Row {

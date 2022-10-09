@@ -19,6 +19,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.br.optheya_android.R
 import androidx.navigation.NavController
+import com.br.optheya_android.components.FindRestaurant
+import com.br.optheya_android.components.TopBarSearchScreens
 import com.br.optheya_android.models.MenuItem
 import com.br.optheya_android.models.Tutorial
 import com.br.optheya_android.screens.Reward
@@ -64,9 +66,10 @@ fun MainSearchMenuContent() {
             modifier = Modifier
                 .padding(start = 8.dp, end = 8.dp)
         ) {
-            Spacer(modifier = Modifier.height(40.dp))
-            ChooseRestaurant()
-            Spacer(modifier = Modifier.height(30.dp))
+            TopBarSearchScreens(title = "Buscar")
+            Spacer(modifier = Modifier.height(14.dp))
+            FindRestaurant()
+            Spacer(modifier = Modifier.height(29.dp))
             LazyColumn( ) {
                items(menu) { menu ->
                    MenuItem(name = menu.itemName, icon = menu.icon)
@@ -75,44 +78,6 @@ fun MainSearchMenuContent() {
         }
 
     }
-}
-
-
-@Composable
-fun ChooseRestaurant() {
-    var whatsChose by remember {
-        mutableStateOf("")
-    }
-    TextField(
-        value = whatsChose,
-        onValueChange = {
-
-        },
-        placeholder = {
-            Text(
-                text = "Busque por restaurantes",
-                fontFamily = Actay,
-                fontWeight = FontWeight.W400,
-                fontSize = 14.sp
-            )
-        },
-        trailingIcon = {
-            Image(
-                painter = painterResource(id = R.drawable.vector_lupa),
-                contentDescription = "Busque por restaurantes"
-            )
-        },
-        colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = WhiteColor,
-            textColor = Gray500Color,
-            focusedIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent,
-            disabledIndicatorColor = Color.Transparent
-        ),
-        modifier = Modifier
-            .fillMaxWidth(),
-        shape = RoundedCornerShape(10.dp)
-    )
 }
 
 
