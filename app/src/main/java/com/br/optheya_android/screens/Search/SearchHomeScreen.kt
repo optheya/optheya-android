@@ -16,6 +16,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.br.optheya_android.R
 import androidx.navigation.NavController
+import com.br.optheya_android.components.BtnFavoriteCards
+import com.br.optheya_android.components.BtnFindCards
+import com.br.optheya_android.components.BtnRequestsCards
 import com.br.optheya_android.ui.theme.*
 
 @Composable
@@ -55,15 +58,6 @@ fun MainSearchHomeContent() {
                     fontWeight = FontWeight.W700,
                     fontSize = 20.sp
                 )
-//                Column(
-//                    modifier = Modifier
-//                        .fillMaxWidth(),
-//                    horizontalAlignment = Alignment.End
-//                ) {
-//                    MapBtn(
-//                        onClick = { }
-//                    )
-//                }
             }
 
             Row {
@@ -96,152 +90,5 @@ fun MapBtn(onClick: () -> Unit, modifier: Modifier = Modifier){
             modifier = Modifier
                 .padding(15.dp)
         )
-    }
-}
-
-@Composable
-fun BtnFindCards() {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth(.5f)
-            .height(90.dp),
-        backgroundColor = PrimaryCrystalClearColor,
-        shape = RoundedCornerShape(20.dp)
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight(),
-        ){
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                Image(painter = painterResource(id = R.drawable.bottom_decor), contentDescription = "btn decr")
-            }
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.Start,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 16.dp, start = 16.dp)
-            ) {
-                Image(painter = painterResource(id = R.drawable.ic_search), contentDescription = "lupa")
-                Spacer(modifier = Modifier.height(29.dp))
-                Text(
-                    text = "Buscar",
-                    fontFamily = Actay,
-                    fontWeight = FontWeight.W700,
-                    fontSize = 14.sp
-                )
-            }
-        }
-
-    }
-}
-
-@Composable
-fun BtnFavoriteCards() {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(90.dp),
-        backgroundColor = SecundaryPrincipalColor,
-        shape = RoundedCornerShape(20.dp)
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight(),
-        ){
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.Start,
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_union),
-                    contentDescription = "btn decr"
-                )
-            }
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.Start,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 16.dp, start = 16.dp)
-            ) {
-                Image(painter = painterResource(id = R.drawable.ic_hearth), contentDescription = "lupa")
-                Spacer(modifier = Modifier.height(29.dp))
-                Text(
-                    text = "Favoritos",
-                    fontFamily = Actay,
-                    fontWeight = FontWeight.W700,
-                    fontSize = 14.sp
-                )
-            }
-        }
-
-    }
-}
-
-@Composable
-fun BtnRequestsCards() {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(90.dp),
-        backgroundColor = AlertColor,
-        shape = RoundedCornerShape(20.dp)
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight(),
-        ){
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.Start,
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_circle_over),
-                    contentDescription = "btn decr"
-                )
-            }
-            Column(
-                verticalArrangement = Arrangement.Bottom,
-                horizontalAlignment = Alignment.Start,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight()
-                    .padding(top = 16.dp, start = 16.dp, bottom = 19.dp)
-            ) {
-                Text(
-                    text = "Meus pedidos",
-                    fontFamily = Actay,
-                    fontWeight = FontWeight.W700,
-                    fontSize = 14.sp
-                )
-            }
-
-            Column(
-                verticalArrangement = Arrangement.Bottom,
-                horizontalAlignment = Alignment.End,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight()
-                    .padding(top = 16.dp, end = 20.dp, bottom = 19.dp)
-            ) {
-                Image(painter = painterResource(id = R.drawable.ic_mkt_kart), contentDescription = "lupa")
-                Spacer(modifier = Modifier.height(10.dp))
-                Text(
-                    text = "0", //TODO: vai receber do back esse valor
-                    fontFamily = Actay,
-                    fontWeight = FontWeight.W700,
-                    fontSize = 14.sp,
-                    color = Gray500Color
-                )
-            }
-        }
-
     }
 }

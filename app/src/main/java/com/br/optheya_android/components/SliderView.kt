@@ -54,7 +54,7 @@ fun SliderView(
         ) {
 
             Image(
-                painter = painterResource(id = R.drawable.gitlswithdog),
+                painter = painterResource(id = itens[page].img),
                 contentDescription = stringResource(id = R.string.contentDescTheya),
                 Modifier
                     .padding(start = 38.dp,end = 38.dp)

@@ -22,8 +22,6 @@ import androidx.navigation.NavController
 import com.br.optheya_android.components.FindRestaurant
 import com.br.optheya_android.components.TopBarSearchScreens
 import com.br.optheya_android.models.MenuItem
-import com.br.optheya_android.models.Tutorial
-import com.br.optheya_android.screens.Reward
 import com.br.optheya_android.ui.theme.*
 
 @Composable

@@ -51,11 +51,9 @@ fun MainTutorialContent(navController: NavController, skipTutorial: String) {
         val state = rememberPagerState()
 
         val tutorials = arrayOf(
-            Tutorial("Hey, eu sou a Theya! Vamos conhecer novos restaurantes?", "Explore a cidade, conheça novos restaurantes, faça pedidos  e ganhe pontos!"),
-            Tutorial("Complete missões avaliando restaurantes", "A cada pedido feito e avaliado você recebe pontos que te ajudarão a cumprir as missões, esses pontos poderão ser trocados por recompensas!"),
-            Tutorial("Faça o pagamento do seu pedido e acompanhe o andamento pelo app", "Alguns dos nossos parceiros contam com a Realidade Aumentada, assim você poderá ver todo o cardápio em 3d!"),
-            Tutorial("Restaurantes de qualidade na palma da mão!", "Alguns dos nossos parceiros contam com a Realidade Aumentada, assim você poderá ver todo o cardápio em 3d!"),
-            Tutorial("Qualidade garantida com selo Theya de qualidade!", "Sabe aquele lanche que usa produtos de qualidade e carnes de primeira? Com o selo Theya de qualidade sua experiência fica ainda melhor!")
+            Tutorial("Hey, eu sou a Theya! Vamos conhecer novos restaurantes?", "Explore a cidade, conheça novos restaurantes, faça pedidos  e ganhe pontos!", img = R.drawable.theya1),
+            Tutorial("Acompanhe o andamento do pedido pelo app", "Nada de filas e atendimentos demorados! Com optheya você tem todo o processo de pedido  na palma da mão!", img = R.drawable.theya2),
+            Tutorial("Restaurantes de qualidade na palma da mão!", "Alguns dos nossos parceiros contam com a Realidade Aumentada, assim você poderá ver todo o cardápio em 3d!", img = R.drawable.theya3),
         )
 
         Column(

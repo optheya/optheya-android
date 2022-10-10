@@ -1,4 +1,4 @@
-package com.br.optheya_android.screens
+package com.br.optheya_android.screens.onboarding
 
 import android.annotation.SuppressLint
 import android.widget.ImageButton
@@ -29,6 +29,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.br.optheya_android.R
+import com.br.optheya_android.components.BtnFavoriteCards
+import com.br.optheya_android.components.BtnFindCards
+import com.br.optheya_android.components.BtnRequestsCards
 import com.br.optheya_android.models.Locale
 import com.br.optheya_android.models.Mission
 import com.br.optheya_android.models.Reward
@@ -39,12 +42,15 @@ import com.br.optheya_android.ui.theme.*
 @Composable
 fun HomeScreen(navController: NavController) {
     Scaffold {
-        MainHomeContent(navController)
+//        MainHomeContent(navController)
+        MainHomeContent()
     }
 }
 
 @Composable
-fun MainHomeContent(navController: NavController) {
+@Preview
+fun MainHomeContent() {
+//fun MainHomeContent(navController: NavController) {
     Surface(
         modifier = Modifier
             .fillMaxSize(),
@@ -110,47 +116,30 @@ fun MainHomeContent(navController: NavController) {
                     Experience(locale = item)
                 })
             }
-            
-            SectionTitle("Missões")
 
-            val mission = arrayOf(
-                Mission("Visitar 2 lojas em um dia", "100 Theyas", 0.5f),
-                Mission("Visitar  4 pastel em 1 dia", "200 Theyas", 0.25f),
-                Mission("Fazer 2 pedidos", "200 Theyas", 0f),
-                Mission("Comer em um restaurante", "10 Theyas", 1f)
-            )
-
-            LazyRow(
+            Row(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .padding(start = 23.dp, top = 16.dp)
+                    .padding(start = 8.dp, end = 8.dp, top = 38.dp)
             ) {
-                items(items = mission, itemContent = { item ->
-                    Mission(mission = item)
-                })
+                BtnFindCards()
+                Spacer(modifier = Modifier.width(8.dp))
+                BtnFavoriteCards()
             }
-
-
-            SectionTitle("Recompensas")
-
-            val rewards = arrayOf(
-                Reward("20% de desconto", "Hamburgueria da Theya", "-2.000 Theyas"),
-                Reward("1 Hamburguer", "Hamburgueria da Theya", "-1.000 Theyas"),
-                Reward("2 Espetinho", "Espetinho da Theya", "-2.400 Theyas"),
-            )
-
-            LazyRow(
+            Spacer(modifier = Modifier.height(2.dp))
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .padding(start = 23.dp, top = 16.dp)
+                    .padding(start = 8.dp, end = 8.dp)
             ) {
-                items(items = rewards, itemContent = { item ->
-                    Reward(reward = item)
-                })
+                BtnRequestsCards()
             }
-
+            Spacer(modifier = Modifier.height(32.dp))
+            Column(
+                modifier = Modifier
+                    .padding(horizontal = 26.dp)
+            ) {
+                BannerFinal()
+            }
+            Spacer(modifier = Modifier.height(32.dp))
         }
     }
 }
@@ -216,22 +205,26 @@ fun Header(){
     ) {
         Row(
             modifier = Modifier
+                .fillMaxWidth()
                 .padding(
-                    top = 19.dp,
-                    start = 20.dp,
-                    bottom = 19.dp
+                    top = 10.dp,
+                    bottom = 10.dp
                 ),
-            horizontalArrangement = Arrangement.Start,
-            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-           CashHome()
+            Image(
+                painter = painterResource(id = R.drawable.ic_logo_black),
+                contentDescription = "Logo black"
+            )
         }
         Row(
             modifier = Modifier
+                .fillMaxWidth()
                 .padding(
                     top = 10.dp,
-                    end = 20.dp,
-                    bottom = 10.dp
+                    bottom = 10.dp,
+                    end = 26.dp
                 ),
             horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically
@@ -563,9 +556,49 @@ private fun ProgressMission(progress: Float){
 
 @Composable
 @Preview
-private fun bannerFinal(){
-    Surface() {
-        Column() {
+private fun BannerFinal() {
+    Column(
+
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(61.dp)
+    ) {
+        Card(
+            elevation = 4.dp,
+            shape = RoundedCornerShape(8.dp)
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.background),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(61.dp)
+            )
+            Column(
+                modifier = Modifier
+                    .padding(10.dp)
+                    .fillMaxHeight()
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    "Para explorar mais",
+                    fontFamily = Actay,
+                    fontWeight = FontWeight.W400,
+                    fontSize = 14.sp,
+                    color = WhiteColor
+                )
+                Text(
+                    "Entre ou cadastre-se",
+                    fontFamily = Actay,
+                    fontWeight = FontWeight.W700,
+                    fontSize = 14.sp,
+                    color = WhiteColor
+                )
+
+            }
         }
     }
 }
