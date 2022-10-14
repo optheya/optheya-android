@@ -3,7 +3,10 @@ package com.br.optheya_android.screens.onboarding
 import android.annotation.SuppressLint
 import android.util.Log
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -12,12 +15,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.br.lord.*
 import com.br.lord.slideview.DataSlide
 import com.br.lord.slideview.SliderView
 import com.br.optheya_android.R
 import com.br.optheya_android.components.NextButton
-import com.br.optheya_android.models.Tutorial
 import com.br.optheya_android.ui.theme.Actay
 import com.br.optheya_android.ui.theme.PrimaryPrincipalColor
 import com.br.optheya_android.ui.theme.WhiteColor

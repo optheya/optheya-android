@@ -15,6 +15,7 @@ enum class OnboardScreens {
     RegistrationScreen,
     UseTermsScreen,
     PolicyPrivacityScreen,
+    ARMenuScreen,
     OtherOptionsLogin,;
 
     companion object {
@@ -36,6 +37,7 @@ enum class OnboardScreens {
                 UseTermsScreen.name -> UseTermsScreen
                 PolicyPrivacityScreen.name -> PolicyPrivacityScreen
                 OtherOptionsLogin.name -> OtherOptionsLogin
+                ARMenuScreen.name -> ARMenuScreen
                 null -> SplashScreen
                 else -> throw IllegalArgumentException()
             }

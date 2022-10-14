@@ -10,7 +10,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.br.optheya_android.screens.Search.BackBtn
+import com.br.optheya_android.screens.search.BackBtn
 import com.br.optheya_android.ui.theme.Actay
 import com.br.optheya_android.ui.theme.Gray900Color
 
