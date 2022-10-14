@@ -15,7 +15,7 @@ enum class OnboardScreens {
     RegistrationScreen,
     UseTermsScreen,
     PolicyPrivacityScreen,
-    OtherOptionsLogin;
+    OtherOptionsLogin,;
 
     companion object {
         fun fromRoute(route: String?): OnboardScreens =

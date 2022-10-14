@@ -89,5 +89,9 @@ fun OnboardNavigation(){
         composable(route = OnboardScreens.RegistrationScreen.name) {
             RegistrationScreen(navController = navController)
         }
+
+        composable(route = OnboardScreens.EnablePermissionsScreen.name) {
+            EnablePermissionsScreen(navController = navController)
+        }
     }
 }

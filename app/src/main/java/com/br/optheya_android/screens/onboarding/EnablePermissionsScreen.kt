@@ -1,6 +1,9 @@
 package com.br.optheya_android.screens
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
+import android.content.ContextWrapper
 import android.util.Log
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.BorderStroke
@@ -15,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
@@ -31,6 +35,7 @@ import com.br.optheya_android.R
 import com.br.optheya_android.components.BackgroundOnboarding
 import com.br.optheya_android.components.PrimaryButton
 import com.br.optheya_android.components.SecundaryButton
+import com.br.optheya_android.helpers.CameraPermissionHelper
 import com.br.optheya_android.navigation.OnboardScreens
 import com.br.optheya_android.ui.theme.*
 import kotlinx.coroutines.CoroutineScope
@@ -38,7 +43,7 @@ import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun EnablePermissions(navController: NavController) {
+fun EnablePermissionsScreen(navController: NavController) {
     Scaffold() {
         MainEnablePermissionContent(navController)
     }
@@ -86,4 +91,13 @@ fun EnableOptions(navController: NavController){
             }
         }
     }
+}
+
+fun Context.findActivity(): Activity {
+    var context = this
+    while (context is ContextWrapper) {
+        if (context is Activity) return context
+        context = context.baseContext
+    }
+    throw IllegalStateException("no activity")
 }

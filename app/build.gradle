@@ -79,6 +79,9 @@ dependencies {
     //RATING BAR
     implementation 'com.github.a914-gowtham:compose-ratingbar:1.2.3'
 
+    //LORD UI
+    implementation 'com.github.karontyy:lord:0.2.1'
+
     testImplementation 'junit:junit:4.13.2'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
