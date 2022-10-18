@@ -24,17 +24,14 @@ import com.br.optheya_android.ui.theme.*
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 fun SearchHomeScreen(navController: NavController) {
     Scaffold() {
-        MainSearchHomeContent()
-//        MainSearchHomeContent(navController = navController)
+        MainSearchHomeContent(navController = navController)
     }
 }
 
 //TODO: Remover string para arquivo de strings
 
 @Composable
-@Preview
-//fun MainSearchHomeContent(navController: NavController) {
-fun MainSearchHomeContent() {
+fun MainSearchHomeContent(navController: NavController) {
     Surface(
         modifier = Modifier
             .fillMaxSize(),
