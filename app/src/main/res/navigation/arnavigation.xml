@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/arnavigation"
+    app:startDestination="@id/arMenu">
+
+    <activity
+        android:id="@+id/arMenu"
+        android:name="com.br.optheya_android.screens.ar.ArMenu"
+        android:label="activity_ar_menu"
+        tools:layout="@layout/activity_ar_menu" />
+</navigation>
