@@ -7,7 +7,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.br.optheya_android.screens.*
 import com.br.optheya_android.screens.onboarding.*
-import com.br.optheya_android.screens.search.ARMenuScreen
 import kotlinx.coroutines.delay
 
 @Composable
@@ -23,7 +22,7 @@ fun OnboardNavigation(){
         ){
             LaunchedEffect(Unit) {
                 delay(2000L)
-                navController.navigate(OnboardScreens.ARMenuScreen.name)
+                navController.navigate(OnboardScreens.TutorialScreen.name)
             }
             SplashScreen(navController = navController)
         }
@@ -54,7 +53,7 @@ fun OnboardNavigation(){
         }
 
         composable(route = OnboardScreens.HomeScreen.name) {
-            HomeScreen(navController = navController)
+            MainScreen()
         }
 
         composable(route = OnboardScreens.LoginEmailScreen.name) {
@@ -93,9 +92,6 @@ fun OnboardNavigation(){
 
         composable(route = OnboardScreens.EnablePermissionsScreen.name) {
             EnablePermissionsScreen(navController = navController)
-        }
-        composable(route = OnboardScreens.ARMenuScreen.name) {
-            ARMenuScreen(navController = navController)
         }
     }
 }
